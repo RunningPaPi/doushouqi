@@ -1,0 +1,10 @@
+source /etc/profile
+bin=`dirname $0`
+cd $bin
+svn --force --username *** --password *** export svn://106.75.136.10/dsq/trunk/doushouqi doushouqi-dev
+cd doushouqi-dev
+mvn clean install -Pdev -Dmaven.test.skip=true  
+rsync -r --delete doushouqi-web/target/doushouqi-web/* /work/apps/devdsq.artqiyi.com
+/work/servers/tomcat-instance/bin/shutdown.sh
+sleep 10
+/work/servers/tomcat-instance/bin/startup.sh
