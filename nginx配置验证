@@ -1,0 +1,6 @@
+验证配置
+
+/work/servers/nginx/sbin/nginx -t -c /work/config/nginx/nginx.conf
+
+启动
+/work/servers/nginx/sbin/nginx -c /work/config/nginx/nginx.conf
